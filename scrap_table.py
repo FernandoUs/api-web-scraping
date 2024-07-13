@@ -34,7 +34,7 @@ def lambda_handler(event, context):
     for row in table.find_all('tr')[1:]:  # Omitir el encabezado
         cells = row.find_all('td')
         if len(cells) > 0:
-            rows.append({headers[i]: cell.text for i, cell in enumerate(cells)})
+            rows.append({headers[i+1]: cell.text for i, cell in enumerate(cells)})
 
     # Guardar los datos en DynamoDB
     dynamodb = boto3.resource('dynamodb')
